@@ -20,3 +20,14 @@ after_success:
   - docker push leeforsterhs/multi-nginx
   - docker push leeforsterhs/multi-server
   - docker push leeforsterhs/multi-worker
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-1-169605970008
+  bucket_path: docker-multi
+  on:
+    branch: master
